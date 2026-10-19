@@ -1,0 +1,319 @@
+@import "tailwindcss";
+
+:root {
+  --font-serif: "Newsreader", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Reading layout variables - easy to adjust */
+  --reading-font-size: 1.32rem;
+  --reading-line-height: 1.7;
+  --reading-max-width: 680px;
+
+}
+
+/* Themes: night (default), paper, neutral. Each theme re-points Tailwind's slate (neutral)
+   and emerald (accent) colour families plus a few app colours, so every screen follows it. */
+:root,
+:root[data-theme="night"] {
+  --app-bg: #1c1a17;
+  --app-surface: #25221e;
+  --app-sunken: #191714;
+  --app-raised: #2c2924;
+  --app-text: #e4dccf;
+  --pool-word: #a8e08f;
+  --on-pool-word: #1c1a17;
+  --color-white: #f6f0e5;
+  --color-slate-50: #faf6ef;
+  --color-slate-100: #f3ece0;
+  --color-slate-200: #e4dccf;
+  --color-slate-300: #cfc4b3;
+  --color-slate-400: #9a8f7f;
+  --color-slate-500: #7a7062;
+  --color-slate-600: #5c544a;
+  --color-slate-700: #433d36;
+  --color-slate-800: #302c27;
+  --color-slate-900: #24211d;
+  --color-slate-950: #171512;
+  --color-emerald-50: #eef6ea;
+  --color-emerald-100: #dcefd5;
+  --color-emerald-200: #c4e3b8;
+  --color-emerald-300: #b0d9a2;
+  --color-emerald-400: #9ccc8f;
+  --color-emerald-500: #82b874;
+  --color-emerald-600: #6a9e5d;
+  --color-emerald-700: #557f4b;
+  --color-emerald-800: #3f5f38;
+  --color-emerald-900: #2e4529;
+  --color-emerald-950: #1d2c1a;
+}
+
+:root[data-theme="paper"] {
+  --app-bg: #f4ecd8;
+  --app-surface: #fbf5e6;
+  --app-sunken: #ece2c9;
+  --app-raised: #f8f0dc;
+  --app-text: #3b3127;
+  --pool-word: #1f5fbf;
+  --on-pool-word: #f4ecd8;
+  --color-white: #2a221a;
+  --color-slate-50: #2a221a;
+  --color-slate-100: #2f271f;
+  --color-slate-200: #3b3127;
+  --color-slate-300: #4e4337;
+  --color-slate-400: #7a6c58;
+  --color-slate-500: #8a7a63;
+  --color-slate-600: #a8987f;
+  --color-slate-700: #cbbd9f;
+  --color-slate-800: #ddd0b4;
+  --color-slate-900: #e9dfc6;
+  --color-slate-950: #efe6cf;
+  --color-emerald-50: #e8f2e8;
+  --color-emerald-100: #1f4a31;
+  --color-emerald-200: #23533a;
+  --color-emerald-300: #275e40;
+  --color-emerald-400: #2f6b45;
+  --color-emerald-500: #b9d6bf;
+  --color-emerald-600: #a9cdb1;
+  --color-emerald-700: #98c2a2;
+  --color-emerald-800: #dcebdd;
+  --color-emerald-900: #e6f0e6;
+  --color-emerald-950: #eef5ee;
+}
+
+:root[data-theme="neutral"] {
+  --app-bg: #181818;
+  --app-surface: #222222;
+  --app-sunken: #141414;
+  --app-raised: #2a2a2a;
+  --app-text: #d6d6d6;
+  --pool-word: #74a9ff;
+  --on-pool-word: #181818;
+  --color-white: #fafafa;
+  --color-slate-50: #fafafa;
+  --color-slate-100: #f0f0f0;
+  --color-slate-200: #d6d6d6;
+  --color-slate-300: #bdbdbd;
+  --color-slate-400: #8a8a8a;
+  --color-slate-500: #6e6e6e;
+  --color-slate-600: #555555;
+  --color-slate-700: #3d3d3d;
+  --color-slate-800: #2a2a2a;
+  --color-slate-900: #202020;
+  --color-slate-950: #121212;
+  --color-emerald-50: #eaf1ff;
+  --color-emerald-100: #d3e2ff;
+  --color-emerald-200: #b3cdff;
+  --color-emerald-300: #a1c3ff;
+  --color-emerald-400: #8fb8ff;
+  --color-emerald-500: #6b9ef5;
+  --color-emerald-600: #4f82db;
+  --color-emerald-700: #3d67b3;
+  --color-emerald-800: #2f4f87;
+  --color-emerald-900: #243d68;
+  --color-emerald-950: #172742;
+}
+
+/* Paper is a light theme: status colours flip so their text shades are dark and their
+   solid fills are pale (solid buttons use text-white, which is dark brown in this theme). */
+:root[data-theme="paper"] {
+  --color-rose-200: #8a2a22; --color-rose-300: #9b3229; --color-rose-400: #a83a30;
+  --color-rose-500: #e9b8b0; --color-rose-600: #f0c9c2; --color-rose-700: #e3aaa1; --color-rose-900: #e6c0b9;
+  --color-red-300: #9b3229; --color-red-400: #a83a30; --color-red-500: #e9b8b0;
+  --color-amber-200: #6e4a0c; --color-amber-300: #7a530f; --color-amber-400: #855c12;
+  --color-amber-500: #e8cf95; --color-amber-600: #edd9a8;
+  --color-purple-300: #5b3e8a; --color-purple-400: #4f347d; --color-purple-500: #cdbde8;
+  --color-blue-300: #2a5a96; --color-blue-500: #b7cdea;
+  --color-indigo-300: #3b4a8f;
+}
+
+/* Reading screen layout (>= 1100px): text column centred; the side card sits to its right.
+   On narrower desktops the column moves left just enough to make room for the card. */
+@media (min-width: 1100px) {
+  .reading-layout {
+    padding-left: 0;
+    padding-right: 0;
+    --text-w: min(700px, calc(100% - 460px));
+    --text-left: clamp(24px, calc(50% - var(--text-w) / 2), calc(100% - var(--text-w) - 436px));
+  }
+  .reading-layout .reading-column {
+    width: var(--text-w);
+    max-width: none;
+    margin-left: var(--text-left);
+    margin-right: 0;
+  }
+  .reading-layout .reading-side {
+    position: absolute;
+    top: 2rem;
+    bottom: 0;
+    left: calc(var(--text-left) + var(--text-w) + 32px);
+    width: 380px;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--app-bg);
+  color: var(--app-text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.font-reading {
+  font-family: var(--font-serif);
+}
+
+.reading-paragraph {
+  font-family: var(--font-serif);
+  font-size: var(--reading-font-size);
+  line-height: var(--reading-line-height);
+  max-width: var(--reading-max-width);
+  text-align: left;
+  word-spacing: normal;
+}
+
+/* Zero-shift sentence highlight */
+.sentence-highlight {
+  background-color: color-mix(in srgb, var(--pool-word) 16%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pool-word) 16%, transparent);
+  border-radius: 3px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Zero-shift selected word pill highlight */
+.word-pill-selected {
+  background-color: var(--pool-word);
+  color: var(--on-pool-word) !important;
+  box-shadow: 0 0 0 3px var(--pool-word);
+  border-radius: 3px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Bottom Sheet mobile animation & styling */
+@keyframes slideUpSheet {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.15s ease-out;
+}
+
+.bottom-sheet-mobile {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  max-height: 55dvh;
+  padding-bottom: env(safe-area-inset-bottom, 12px);
+  animation: slideUpSheet 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.55);
+}
+
+/* Anki Card Content Styling */
+.card-html-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--app-text);
+}
+
+.card-html-content a {
+  color: var(--color-emerald-400);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.card-html-content a:hover {
+  color: var(--color-emerald-300);
+}
+
+.card-html-content ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-html-content ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-html-content li {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.card-html-content hr {
+  border: 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  margin: 1rem 0;
+}
+
+/* Inline Sound Play Button in Card HTML */
+.sound-play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: 0 4px;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-emerald-500) 18%, transparent);
+  color: var(--color-emerald-400);
+  border: 1px solid color-mix(in srgb, var(--color-emerald-500) 35%, transparent);
+  font-size: 10px;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.sound-play-btn:hover {
+  background-color: color-mix(in srgb, var(--color-emerald-500) 30%, transparent);
+  color: var(--color-emerald-300);
+  transform: scale(1.05);
+}
+
+.sound-play-btn:active {
+  transform: scale(0.92);
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Ovia",
+  "description": "Türkçe konuşan öğrenciler için akıcı İngilizce okuma ve kelime kartı prototipi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
